@@ -1,14 +1,9 @@
-#include <raylib.h>
-
-#include <functional>
-#include <iostream>
-#include <glm\glm.hpp>
-
-#include "CSensor.h"
-#include "CEndPoint.h"
+#include "CSensor.hpp"
+#include "CEndPoint.hpp"
 #include "CRender.hpp"
-#include "CApp.hpp"
+#include "CPrediction.hpp"
 
+#include "CApp.hpp"
 
 int main()
 {

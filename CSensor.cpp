@@ -1,4 +1,5 @@
-#include "CSensor.h"
+#include "CSensor.hpp"
+#include "CEndPoint.hpp"
 
 
 void CSensor::OnOpen(client* c, websocketpp::connection_hdl hdl) {
@@ -23,6 +24,10 @@ void CSensor::OnClose(client* c, websocketpp::connection_hdl hdl) {
         << websocketpp::close::status::get_string(con->get_remote_close_code())
         << "), close reason: " << con->get_remote_close_reason();
     m_error_reason = s.str();
+}
+
+std::string CSensor::ComposeUri(CEndPoint& endpoint) {
+    return endpoint.GetUrl().append(m_type);
 }
 
 void CSensor::OnMessage(websocketpp::connection_hdl hdl, client::message_ptr msg) {

@@ -1,6 +1,6 @@
 
-#include "CSensor.h"
-#include "CEndPoint.h"
+#include "CSensor.hpp"
+#include "CEndPoint.hpp"
 
 CEndPoint::ptr CEndPoint::get_metadata(int id) const {
     con_list::const_iterator metadata_it = m_connection_list.find(id);
@@ -12,10 +12,10 @@ CEndPoint::ptr CEndPoint::get_metadata(int id) const {
     }
 }
 
-void CEndPoint::connect(ptr sensor) {
+void CEndPoint::Connect(ptr sensor) {
     websocketpp::lib::error_code ec;
 
-    client::connection_ptr con = m_endpoint.get_connection(sensor->compose_uri(), ec);
+    client::connection_ptr con = m_endpoint.get_connection(sensor->ComposeUri(*this), ec);
 
     if (ec) {
         std::cout << "> Connect initialization error: " << ec.message() << std::endl;
@@ -59,7 +59,7 @@ void CEndPoint::connect(ptr sensor) {
 
 }
 
-void CEndPoint::close(int id, websocketpp::close::status::value code, std::string reason)
+void CEndPoint::Close(int id, websocketpp::close::status::value code, std::string reason)
 {
     websocketpp::lib::error_code ec;
 

@@ -33,21 +33,27 @@
     <ClCompile Include="CRender.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CPrediction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CSensor.h">
+    <ClInclude Include="CSensor.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CEndPoint.h">
+    <ClInclude Include="CEndPoint.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CApp.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CRender.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CPrediction.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

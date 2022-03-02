@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CApp.cpp" />
+    <ClCompile Include="CPrediction.cpp" />
     <ClCompile Include="CRender.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CSensor.cpp" />
@@ -154,10 +155,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CApp.hpp" />
+    <ClInclude Include="CPrediction.hpp" />
     <ClInclude Include="CRender.hpp" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="CSensor.h" />
-    <ClInclude Include="CEndPoint.h" />
+    <ClInclude Include="CSensor.hpp" />
+    <ClInclude Include="CEndPoint.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

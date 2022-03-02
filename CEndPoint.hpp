@@ -3,6 +3,8 @@ typedef websocketpp::client<websocketpp::config::asio_client> client;
                                      
 
 class CEndPoint {
+private:
+    std::string m_url;
 public:
     typedef websocketpp::lib::shared_ptr<CSensor> ptr;
 
@@ -39,11 +41,17 @@ public:
         m_thread->join();
     }
 
-    void connect(ptr sensor);
+    void Connect(ptr sensor);
 
 
-    void close(int id, websocketpp::close::status::value code, std::string reason);
+    void Close(int id, websocketpp::close::status::value code, std::string reason);
     
+    void SetUrl(std::string _url) {
+        m_url = _url;
+    }
+    std::string GetUrl() {
+        return m_url;
+    }
     void message_handle(websocketpp::connection_hdl hdl, client::message_ptr msg) {
         std::cout << "OnMessage called with hdl: " << hdl.lock().get()
             << " and message (" << msg->get_payload().size() << "): " << msg->get_payload()

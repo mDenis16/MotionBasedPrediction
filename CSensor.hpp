@@ -13,13 +13,15 @@
 
 typedef websocketpp::client<websocketpp::config::asio_client> client;
 
+class CEndPoint;
+
 class CSensor {
 public:
     
 
     CSensor(std::string type)
         : m_status("Connecting")
-        , m_type(m_type)
+        , m_type(type)
         , m_server("N/A") {
     }
 
@@ -41,9 +43,8 @@ public:
         return m_hdl;
     }
 
-    std::string compose_uri() {
-        return std::string("");
-    }
+    std::string ComposeUri(CEndPoint& endpoint);
+
     int get_id() const {
         return m_id;
     }
