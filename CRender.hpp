@@ -2,6 +2,7 @@
 #include <raylib.h>
 #include <thread>
 
+
 class CRender
 {
 private:
@@ -9,12 +10,15 @@ private:
 	bool bInitialized = false;
 
 	std::thread tRenderThread;
-	Camera3D Camera;
+	Camera CCamera = { 0 };
 public:
 	void RenderScene();
-	void Initialize(int _w, int _h);
+	void Initialize(int _w, int _h, CPrediction* pred);
 	void CameraSetup();
 	void Run();
-	Camera3D& GetCam() { return Camera; }
+
+	CPrediction* Pred;
+
+	Camera& GetCam() { return CCamera; }
 };
 

@@ -2,7 +2,7 @@
 #include "CSensor.hpp"
 #include "CEndPoint.hpp"
 
-CEndPoint::ptr CEndPoint::get_metadata(int id) const {
+CEndPoint::ptr CEndPoint::GetMeta(int id) const {
     con_list::const_iterator metadata_it = m_connection_list.find(id);
     if (metadata_it == m_connection_list.end()) {
         return CEndPoint::ptr();
@@ -59,8 +59,7 @@ void CEndPoint::Connect(ptr sensor) {
 
 }
 
-void CEndPoint::Close(int id, websocketpp::close::status::value code, std::string reason)
-{
+void CEndPoint::Close(int id, websocketpp::close::status::value code, std::string reason) {
     websocketpp::lib::error_code ec;
 
     con_list::iterator metadata_it = m_connection_list.find(id);

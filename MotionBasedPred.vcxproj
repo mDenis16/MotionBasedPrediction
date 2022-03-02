@@ -78,7 +78,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>F:\includes\glm-master;$(IncludePath);C:\raylib\raylib\src;F:\includes\websocketpp-master;F:\includes\boost_1_73_0;</IncludePath>
+    <IncludePath>F:\includes\glm-master;$(IncludePath);C:\raylib\raylib\src;F:\includes\websocketpp-master;F:\includes\boost_1_73_0;F:\includes\nlohmann</IncludePath>
     <LibraryPath>$(LibraryPath);C:\raylib\raylib\projects\VS2019\build\raylib\bin\x64\Debug.DLL;F:\includes\boost_1_73_0\stage\lib;</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

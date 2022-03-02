@@ -1,6 +1,30 @@
 #include "CSensor.hpp"
 #include "CEndPoint.hpp"
 
+#include <nlohmann\json.hpp>
+#include <glm\vec3.hpp>
+
+glm::vec3 CSensor::ReadVector() {
+    
+    if (Value.empty())
+        return glm::vec3(0, 0, 0);
+
+    try {
+        std::lock_guard<std::mutex> guard(mtx);
+        const auto json = nlohmann::json::parse(Value);
+
+        auto samp = json["values"].get<std::vector<float>>();
+
+        auto vec = glm::vec3(samp.at(0), samp.at(1), samp.at(2));
+        return vec;
+
+    }
+    catch (int ex) {
+        return glm::vec3(0, 0, 0);
+    }
+  
+     
+}
 
 void CSensor::OnOpen(client* c, websocketpp::connection_hdl hdl) {
     m_status = "Open";
@@ -31,12 +55,15 @@ std::string CSensor::ComposeUri(CEndPoint& endpoint) {
 }
 
 void CSensor::OnMessage(websocketpp::connection_hdl hdl, client::message_ptr msg) {
-    std::cout << "ON MESSAGE SOCKET ID   " << m_id << msg->get_payload() << std::endl;
+    
+    std::lock_guard<std::mutex> guard(mtx);
 
-    if (msg->get_opcode() == websocketpp::frame::opcode::text) {
-        //. m_messages.push_back(msg->get_payload());
-    }
-    else {
-        // m_messages.push_back(websocketpp::utility::to_hex(msg->get_payload()));
-    }
+    Value = msg->get_payload();
+
+    //if (msg->get_opcode() == websocketpp::frame::opcode::text) {
+    //    //. m_messages.push_back(msg->get_payload());
+    //}
+    //else {
+    //    // m_messages.push_back(websocketpp::utility::to_hex(msg->get_payload()));
+    //}
 }

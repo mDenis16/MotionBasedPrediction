@@ -58,7 +58,7 @@ public:
             << std::endl;
 
     }
-    ptr get_metadata(int id) const;
+    ptr GetMeta(int id) const;
 
     typedef std::map<int, ptr> con_list;
 private:

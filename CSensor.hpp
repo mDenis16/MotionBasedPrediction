@@ -10,10 +10,15 @@
 #include <map>
 #include <string>
 #include <sstream>
+#include <glm/vec3.hpp>
 
 typedef websocketpp::client<websocketpp::config::asio_client> client;
 
 class CEndPoint;
+
+template <typename T>
+constexpr bool IsVector() { return std::is_same<T, glm::vec3>::value; }
+
 
 class CSensor {
 public:
@@ -56,7 +61,15 @@ public:
         return m_status;
     }
 
+    std::string Value;
+
+    std::mutex mtx;
+   
+    glm::vec3 ReadVector();
+
+
 private:
+
     int m_id;
     websocketpp::connection_hdl m_hdl;
     std::string m_status;

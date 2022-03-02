@@ -4,9 +4,6 @@
 /// Forward references
 /// </summary>
 /// 
-class CRender;
-class CEndPoint;
-class CPrediction;
 
 
 class CApp

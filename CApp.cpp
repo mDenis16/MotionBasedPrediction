@@ -1,7 +1,7 @@
 #include "CSensor.hpp"
 #include "CEndPoint.hpp"
-#include "CRender.hpp"
 #include "CPrediction.hpp"
+#include "CRender.hpp"
 
 #include "CApp.hpp"
 
@@ -12,7 +12,8 @@ void CApp::Run() {
 
 	prediction.InitializeSensors(endpoint);
 
-	render.Initialize(800, 600);
+
+	render.Initialize(800, 600, &prediction);
 
 
 	render.Run();
